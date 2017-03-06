@@ -4,11 +4,26 @@ require 'moltin/client'
 
 module Moltin
   class << self
-    attr_accessor :configuration
-  end
+    attr_writer :configuration
 
-  def self.configure
-    @configuration = Configuration.new
-    yield(configuration)
+    # A Moltin configuration object. Must act like a hash and return values
+    # for all Moltin configuration options. See Moltin::Configuration.
+    def configuration
+      @configuration ||= Configuration.new
+    end
+
+    # Public: Call this method to modify defaults in your initializers.
+    #
+    # Examples:
+    #
+    #   Moltin.configure do |config|
+    #     config.client_id = '123'
+    #     config.client_secret  = '456'
+    #   end
+    #
+    # Yields Moltin configuration
+    def configure
+      yield(configuration)
+    end
   end
 end
