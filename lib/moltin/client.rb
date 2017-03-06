@@ -18,7 +18,7 @@ module Moltin
 
     RESOURCES.each do |resource, klass|
       define_method resource do
-        klass.new
+        klass.new(@config)
       end
     end
 

@@ -35,6 +35,8 @@ Gem::Specification.new do |spec|
   spec.rdoc_options = ['--charset=UTF-8']
   spec.extra_rdoc_files = %w[README.md]
 
+  spec.add_dependency 'faraday'
+
   spec.add_development_dependency 'bundler', '~> 1.14'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.0'

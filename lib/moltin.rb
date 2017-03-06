@@ -1,3 +1,5 @@
+require 'faraday'
+
 require 'moltin/version'
 require 'moltin/configuration'
 
