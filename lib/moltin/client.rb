@@ -1,8 +1,8 @@
-require 'forwardable'
-
 module Moltin
   class Client
-    extend Forwardable
+    RESOURCES = {
+      products: Moltin::Resources::Product
+    }.freeze
 
     # The Moltin configuration.
     attr_reader :config
@@ -14,6 +14,12 @@ module Moltin
     #
     def initialize(options = nil)
       @config = load_config(options)
+    end
+
+    RESOURCES.each do |resource, klass|
+      define_method resource do
+        klass.new
+      end
     end
 
     private

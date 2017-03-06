@@ -1,5 +1,9 @@
 require 'moltin/version'
 require 'moltin/configuration'
+
+require 'moltin/resource'
+require 'moltin/resources/product'
+
 require 'moltin/client'
 
 module Moltin
