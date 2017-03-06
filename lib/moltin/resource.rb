@@ -1,5 +1,6 @@
 module Moltin
   class Resource
+    # Remove auth_token and use storage instead
     attr_accessor :auth_token, :config
 
     def initialize(config)
@@ -17,6 +18,7 @@ module Moltin
       auth_token
     end
 
+    # TODO: Probably want to move that into a more specific class
     def authenticate
       body = {
         grant_type: 'client_credentials',
