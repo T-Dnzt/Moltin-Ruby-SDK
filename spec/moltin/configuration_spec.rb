@@ -49,10 +49,10 @@ module Moltin
       end
     end
 
-    describe '#merge!' do
+    describe '#merge' do
       it 'merges the given options' do
         config = Configuration.new
-        config.merge!({ client_id: '123' })
+        config.merge(client_id: '123')
         expect(config.client_id).to eq('123')
       end
     end

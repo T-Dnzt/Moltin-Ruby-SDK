@@ -16,8 +16,8 @@ RSpec.describe Moltin do
     it 'sets the client_id and client_secret' do
       client = Moltin::Client.new
 
-      expect(client.client_id).to eq 'client_id'
-      expect(client.client_secret).to eq 'client_secret'
+      expect(client.config.client_id).to eq 'client_id'
+      expect(client.config.client_secret).to eq 'client_secret'
     end
   end
 end

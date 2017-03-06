@@ -51,11 +51,10 @@ module Moltin
     # options - Hash containing values to be updated
     #
     # Returns the current object
-    def merge!(options)
+    def merge(options)
       OPTIONS.keys.each do |name|
         instance_variable_set("@#{name}", options[name]) if options[name]
       end
-      self
     end
   end
 end
