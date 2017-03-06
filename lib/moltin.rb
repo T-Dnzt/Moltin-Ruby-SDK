@@ -1,4 +1,4 @@
-require "moltin/version"
+require 'moltin/version'
 
 module Moltin
   # Your code goes here...
