@@ -9,9 +9,11 @@ Gem::Specification.new do |spec|
   spec.authors       = ["T-Dnzt"]
   spec.email         = ["thi.denizet@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = 'Moltin Ruby SDK'
+  spec.description   = 'Unified APIs for inventory, carts, the checkout process,
+                        payments and more, so you can focus on creating seamless
+                        customer experiences at any scale.'
+  spec.homepage      = 'https://www.moltin.com/'
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
