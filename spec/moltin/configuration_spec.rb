@@ -45,9 +45,15 @@ module Moltin
       it 'returns the configuration as a hash' do
         expect(Configuration.new.to_hash).to eq(client_id: nil,
                                                 client_secret: nil,
-                                                version: 'v2',
-                                                baseURL: 'https://api.moltin.com',
-                                                authURI: 'oauth/access_token')
+                                                baseURL: 'https://api.moltin.com')
+      end
+    end
+
+    describe '#merge!' do
+      it 'merges the given options' do
+        config = Configuration.new
+        config.merge!({ client_id: '123' })
+        expect(config.client_id).to eq('123')
       end
     end
   end

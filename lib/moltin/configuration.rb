@@ -6,18 +6,23 @@ module Moltin
       client_secret: -> { ENV['MOLTIN_CLIENT_SECRET'] },
 
       # API Endpoints Configuration
+      baseURL: 'https://api.moltin.com'
+    }.freeze
+
+    MOLTIN_OPTIONS = {
       version: 'v2',
-      baseURL: 'https://api.moltin.com',
       authURI: 'oauth/access_token'
     }.freeze
 
     # Setting all the OPTIONS keys as attributes
     attr_accessor(*OPTIONS.keys)
+    attr_reader(*MOLTIN_OPTIONS.keys)
 
     def initialize
       # Initializing each attribute with its default value.
-      # These values can then be overridden.
-      OPTIONS.each do |name, val|
+      # These values can be overridden with merge or #{attribute}=.
+      # baseURL is reserved for enterprise customers.
+      OPTIONS.merge(MOLTIN_OPTIONS).each do |name, val|
         value = val.respond_to?(:lambda?) && val.lambda? ? val.call : val
         instance_variable_set("@#{name}", value)
       end
@@ -39,6 +44,18 @@ module Moltin
         hash[option.to_sym] = send(option)
         hash
       end
+    end
+
+    # Public: Merge the given options into the current set of attributes
+    #
+    # options - Hash containing values to be updated
+    #
+    # Returns the current object
+    def merge!(options)
+      OPTIONS.keys.each do |name|
+        instance_variable_set("@#{name}", options[name]) if options[name]
+      end
+      self
     end
   end
 end
