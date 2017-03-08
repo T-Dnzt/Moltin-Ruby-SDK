@@ -42,7 +42,7 @@ module Moltin
 
         context 'with expired token' do
           it 'returns the token' do
-            VCR.use_cassette('authenticate/valid') do
+            VCR.use_cassette('authenticate/valid_expired') do
               storage = {
                 'authentication' => {
                   'access_token' => '123',
