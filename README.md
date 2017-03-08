@@ -24,16 +24,16 @@ Or install it yourself as:
 
 ## Configuration
 
-In order to use this gem, you need to define your Moltin credentials. This can either be done globally using the following option, or on a per client-basis.
+In order to use this gem, you need to define your Moltin credentials. This can either be done globally or on a per client basis.
 
-Note: if you are unsure what your client_id or client_secret are, please select the [store in your account](https://accounts.moltin.com/) and copy them.
+__Note: if you are unsure what your client_id or client_secret are, please select the [store in your account](https://accounts.moltin.com/) and copy them.__
 
 ### Global Configuration
 
 By default, the gem will set your credentials using the environment variables below, if they are available.
 
-`ENV['MOLTIN_CLIENT_ID']`
-`ENV['MOLTIN_CLIENT_SECRET']
+- `ENV['MOLTIN_CLIENT_ID']`
+- `ENV['MOLTIN_CLIENT_SECRET']`
 
 You can also set them yourself when your application is initialized (this can easily fit into an initializer if you are using Ruby on Rails).
 
@@ -50,14 +50,14 @@ If you need to connect to multiple stores or would prefer to define the configur
 
 ```
 Moltin::Client.new({
-  client_id = 'YOUR_CLIENT_ID'
-  client_id = 'YOUR_CLIENT_SECRET'
+  client_id: 'YOUR_CLIENT_ID',
+  client_id: 'YOUR_CLIENT_SECRET'
 })
 ```
 
 ### Enterprise Customers
 
-If you are an enterprise customer and have your own infrastructure with your own domain, you can configure the client to use your domain:
+If you are an enterprise customer and have your own infrastructure with your own domain, you can configure the client to use your domain by setting the `base_url` option:
 
 ```
 Moltin.configure do |config|
@@ -65,6 +65,14 @@ Moltin.configure do |config|
   config.client_id = 'YOUR_CLIENT_SECRET'
   config.base_url  = 'https://api.yourdomain.com'
 end
+```
+
+```
+Moltin::Client.new({
+  client_id: 'YOUR_CLIENT_ID',
+  client_id: 'YOUR_CLIENT_SECRET',
+  base_url:  'https://api.yourdomain.com'
+})
 ```
 
 ## Usage
