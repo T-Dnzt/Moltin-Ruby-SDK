@@ -1,25 +1,30 @@
 module Moltin
   class Resource
-    # Remove auth_token and use storage instead
-    attr_accessor :auth_token, :config
+    attr_accessor :config, :storage
 
-    def initialize(config)
+    def initialize(config, storage)
       @config = config
-      self
+      @storage = storage
     end
 
+    # Public: Retrieve the access_token from storage or from the API
+    #
+    # Returns a valid access_token if the credentials were valid
     def get_access_token
-      # TODO: Retrieve from storage
-      return auth_token if auth_token && auth_token.valid?
+      auth = storage['authentication']
+      return auth['access_token'] if auth && auth['expires'] > Time.now.to_i
 
-      # TODO: Save in storage
-
-      auth_token = authenticate
-      auth_token
+      auth = authenticate_client
+      storage['authentication'] = auth
+      auth['access_token']
     end
 
-    # TODO: Probably want to move that into a more specific class
-    def authenticate
+    # Public: Call the Moltin API passing the credentials to retrieve a valid
+    # access_token
+    #
+    # Raises an Errors::AuthenticationError if the call fails.
+    # Returns a valid access_token if the credentials were valid.
+    def authenticate_client
       body = {
         grant_type: 'client_credentials',
         client_id: @config.client_id,
@@ -28,7 +33,7 @@ module Moltin
       response = Faraday.new(url: @config.baseURL).post("/#{@config.authURI}", body)
 
       body = JSON.parse(response.body)
-      raise AuthenticationError if body.access_token.blank?
+      raise Errors::AuthenticationError unless body['access_token']
 
       body
     end

@@ -3,6 +3,8 @@ require 'faraday'
 require 'moltin/version'
 require 'moltin/configuration'
 
+require 'moltin/errors/authentication_error'
+
 require 'moltin/resource'
 require 'moltin/resources/product'
 

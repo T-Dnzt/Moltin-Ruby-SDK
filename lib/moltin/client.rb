@@ -5,7 +5,7 @@ module Moltin
     }.freeze
 
     # The Moltin configuration.
-    attr_reader :config
+    attr_reader :config, :storage
 
     # Public: Create an instance of the SDK client,
     # using the options of the argument or the global configuration
@@ -14,11 +14,12 @@ module Moltin
     #
     def initialize(options = nil)
       @config = load_config(options)
+      @storage = {}
     end
 
     RESOURCES.each do |resource, klass|
       define_method resource do
-        klass.new(@config)
+        klass.new(@config, @storage)
       end
     end
 
