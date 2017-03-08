@@ -1,6 +1,10 @@
 # Moltin
 
-TODO: Write description
+[The smarter way to build eCommerce applications](https://www.moltin.com/)
+
+Unified APIs for inventory, carts, the checkout process, payments and more, so you can focus on creating seamless customer experiences at any scale.
+
+This Ruby SDK provides simple access to all the features offered by Moltin.
 
 ## Installation
 
@@ -18,9 +22,54 @@ Or install it yourself as:
 
     $ gem install moltin
 
+## Configuration
+
+In order to use this gem, you need to define your Moltin credentials. This can either be done globally using the following option, or on a per client-basis.
+
+Note: if you are unsure what your client_id or client_secret are, please select the [store in your account](https://accounts.moltin.com/) and copy them.
+
+### Global Configuration
+
+By default, the gem will set your credentials using the environment variables below, if they are available.
+
+`ENV['MOLTIN_CLIENT_ID']`
+`ENV['MOLTIN_CLIENT_SECRET']
+
+You can also set them yourself when your application is initialized (this can easily fit into an initializer if you are using Ruby on Rails).
+
+```
+Moltin.configure do |config|
+  config.client_id = 'YOUR_CLIENT_ID'
+  config.client_id = 'YOUR_CLIENT_SECRET'
+end
+```
+
+### Per Client Configuration
+
+If you need to connect to multiple stores or would prefer to define the configuration for each client instead of globally, you can do it with the following code:
+
+```
+Moltin::Client.new({
+  client_id = 'YOUR_CLIENT_ID'
+  client_id = 'YOUR_CLIENT_SECRET'
+})
+```
+
+### Enterprise Customers
+
+If you are an enterprise customer and have your own infrastructure with your own domain, you can configure the client to use your domain:
+
+```
+Moltin.configure do |config|
+  config.client_id = 'YOUR_CLIENT_ID'
+  config.client_id = 'YOUR_CLIENT_SECRET'
+  config.base_url  = 'https://api.yourdomain.com'
+end
+```
+
 ## Usage
 
-TODO: Write usage instructions here
+Coming Soon.
 
 ## Development
 
