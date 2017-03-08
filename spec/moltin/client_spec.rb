@@ -9,8 +9,8 @@ module Moltin
           expect(config.client_id).to eq('id')
           expect(config.client_secret).to eq('secret')
           expect(config.version).to eq('v2')
-          expect(config.baseURL).to eq('https://api.moltin.com')
-          expect(config.authURI).to eq('oauth/access_token')
+          expect(config.base_url).to eq('https://api.moltin.com')
+          expect(config.auth_uri).to eq('oauth/access_token')
         end
       end
 
@@ -20,8 +20,8 @@ module Moltin
           expect(config.client_id).to eq(nil)
           expect(config.client_secret).to eq(nil)
           expect(config.version).to eq('v2')
-          expect(config.baseURL).to eq('https://api.moltin.com')
-          expect(config.authURI).to eq('oauth/access_token')
+          expect(config.base_url).to eq('https://api.moltin.com')
+          expect(config.auth_uri).to eq('oauth/access_token')
         end
       end
     end

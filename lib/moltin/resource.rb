@@ -30,7 +30,7 @@ module Moltin
         client_id: @config.client_id,
         client_secret: @config.client_secret
       }
-      response = Faraday.new(url: @config.baseURL).post("/#{@config.authURI}", body)
+      response = Faraday.new(url: @config.base_url).post("/#{@config.auth_uri}", body)
 
       body = JSON.parse(response.body)
       raise Errors::AuthenticationError unless body['access_token']

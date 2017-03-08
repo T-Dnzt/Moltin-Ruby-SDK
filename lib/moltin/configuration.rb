@@ -6,12 +6,12 @@ module Moltin
       client_secret: -> { ENV['MOLTIN_CLIENT_SECRET'] },
 
       # API Endpoints Configuration
-      baseURL: 'https://api.moltin.com'
+      base_url: 'https://api.moltin.com'
     }.freeze
 
     MOLTIN_OPTIONS = {
       version: 'v2',
-      authURI: 'oauth/access_token'
+      auth_uri: 'oauth/access_token'
     }.freeze
 
     # Setting all the OPTIONS keys as attributes
@@ -21,7 +21,7 @@ module Moltin
     def initialize
       # Initializing each attribute with its default value.
       # These values can be overridden with merge or #{attribute}=.
-      # baseURL is reserved for enterprise customers.
+      # base_url is reserved for enterprise customers.
       OPTIONS.merge(MOLTIN_OPTIONS).each do |name, val|
         value = val.respond_to?(:lambda?) && val.lambda? ? val.call : val
         instance_variable_set("@#{name}", value)
