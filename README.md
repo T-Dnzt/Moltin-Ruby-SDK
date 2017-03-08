@@ -40,7 +40,7 @@ You can also set them yourself when your application is initialized (this can ea
 ```
 Moltin.configure do |config|
   config.client_id = 'YOUR_CLIENT_ID'
-  config.client_id = 'YOUR_CLIENT_SECRET'
+  config.client_secret = 'YOUR_CLIENT_SECRET'
 end
 ```
 
@@ -51,7 +51,7 @@ If you need to connect to multiple stores or would prefer to define the configur
 ```
 Moltin::Client.new({
   client_id: 'YOUR_CLIENT_ID',
-  client_id: 'YOUR_CLIENT_SECRET'
+  client_secret: 'YOUR_CLIENT_SECRET'
 })
 ```
 
@@ -62,7 +62,7 @@ If you are an enterprise customer and have your own infrastructure with your own
 ```
 Moltin.configure do |config|
   config.client_id = 'YOUR_CLIENT_ID'
-  config.client_id = 'YOUR_CLIENT_SECRET'
+  config.client_secret = 'YOUR_CLIENT_SECRET'
   config.base_url  = 'https://api.yourdomain.com'
 end
 ```
@@ -70,7 +70,7 @@ end
 ```
 Moltin::Client.new({
   client_id: 'YOUR_CLIENT_ID',
-  client_id: 'YOUR_CLIENT_SECRET',
+  client_secret: 'YOUR_CLIENT_SECRET',
   base_url:  'https://api.yourdomain.com'
 })
 ```
